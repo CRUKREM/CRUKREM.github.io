@@ -14,6 +14,16 @@
     <br/>
     <a href='javascript:void(0)' onclick='onRecordClear()'>Clear File</a>
   </div>
+  <div style='position: fixed; bottom: 16px; right: 16px; z-index:2';>
+    <img id='recordStartButton' src="stop.png?v=1562098447408" width='64px'  height='64px' onclick='onRecordStart()'>
+    <img id='recordStopButton' src="stop.png?v=1562098447408" width='64px'  height='64px' onclick='onRecordStop()' style='display: none;'>
+  </div>
+  <div style='position: fixed; bottom: 16px; left: 16px; z-index:2' id='markersStatus';>
+    <div>
+      Tracking <span class='labelTrackingBackend'>Unknown</span> - 
+      Learning <span class='globalStatus'>Stopped</span>
+    </div>
+    <ul></ul>
 <script>
 ;(function(){
 //////////////////////////////////////////////////////////////////////////////////
