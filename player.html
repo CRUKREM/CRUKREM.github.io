@@ -194,7 +194,7 @@
 	//////////////////////////////////////////////////////////////////////////////
 	document.querySelector('#recordButton').addEventListener('click', function(){
 		urlOptionsUpdate()
-		THREEx.ArMultiMarkerUtils.navigateToLearnerPage('learner.html', urlOptions.trackingBackend)
+		THREEx.ArMultiMarkerUtils.navigateToLearnerPage('learner.html', urlOptions.trackingBackend, '1, 2, 3')
 	})
 	window.resetMarkerFile = function(){
 		THREEx.ArMultiMarkerUtils.storeDefaultMultiMarkerFile(urlOptions.trackingBackend)
