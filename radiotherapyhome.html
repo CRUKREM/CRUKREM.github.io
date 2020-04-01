@@ -8,20 +8,20 @@
 	<body style='margin : 0px; overflow: hidden;'>
 		<button onclick="myFunction()">Try it</button>
 
-			<p id="demo"></p>
+		<p id="demo"></p>
 
-			<script>
-			function myFunction() {
-  				var txt;
-  				var person = prompt("Please enter your name:", "Harry Potter");
- 				if (person == null || person == "") {
-    					txt = "User cancelled the prompt.";
-  				} else {
-    					txt = "Hello " + person + "! How are you today?";
-  				}
-  				document.getElementById("demo").innerHTML = txt;
-			}
-			</script>
+		<script>
+		function myFunction() {
+  			var txt;
+  			var person = prompt("Please enter your name:", "Harry Potter");
+ 			if (person == null || person == "") {
+    				txt = "User cancelled the prompt.";
+  			} else {
+    				txt = "Hello " + person + "! How are you today?";
+  			}
+  			document.getElementById("demo").innerHTML = txt;
+		}
+		</script>
 		
   		<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; vr-mode-ui="enabled: false"; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
 			<a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse"; id="mask"; type='barcode' value='1' smooth='true'>
