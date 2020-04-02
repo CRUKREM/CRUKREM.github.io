@@ -10,20 +10,6 @@
 		</script>
 	</head>
 	<body style='margin : 0px; overflow: hidden;'>
-			<div class="modal hide fade" id="myModal" role="dialog">
-  				<div class="modal-header">
-    					<a class="close" data-dismiss="modal">×</a>
-    					<h3>Modal header</h3>
-  				</div>
-  				<div class="modal-body">
-    					<p>test</p>
-  				</div>
-  				<div class="modal-footer">
-    					<a href="#" class="btn">Close</a>
-    					<a href="#" class="btn btn-primary">Save changes</a>
-  				</div>
-			</div>
-		
   		<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false'; vr-mode-ui="enabled: false"; detectionMode: "mono_and_matrix"; matrixCodeType: "3x3";'>
 			<a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse"; id="mask"; type='barcode' value='1' smooth='true'>
 				<a-gltf-model src='radiotherapy/radiomask.glb' scale='0.05 0.05 0.05' position='0 0 0' object-model id="mask">
@@ -45,6 +31,18 @@
 			<a-entity camera></a-entity>
 			<a-light type="ambient" color="#bbb" intensity="0.8"></a-light>
     			<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
-    		</a-scene>
+    		</a-scene>															   			<div class="modal hide fade" id="myModal" role="dialog">
+  		
+		<div class="modal-header">
+    			<a class="close" data-dismiss="modal">×</a>
+    			<h3>Modal header</h3>
+  		</div>
+  		<div class="modal-body">
+    			<p>test</p>
+  		</div>
+  		<div class="modal-footer">
+    			<a href="#" class="btn">Close</a>
+    			<a href="#" class="btn btn-primary">Save changes</a>
+  		</div>
   	</body>
 </html>
