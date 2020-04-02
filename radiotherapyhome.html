@@ -4,8 +4,8 @@
 		<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 		<script src="ar.js.02.07.js"></script>
 		<script type="text/javascript">
-    			$(window).on('load',function(){
-        			$('#myModal').dialog(modal: true);
+    			$(document).ready(function(){
+        			$("#mymodal").dialog({modal: true});
     			});
 		</script>
 	</head>
@@ -33,7 +33,7 @@
     			<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
     		</a-scene>															   			<div class="modal hide fade" id="myModal" role="dialog">
 
-  		<div class="modal-dialog">
+  		<div class="modal fade" id="myModal" role="dialog">>
     			<p>test</p>
   		</div>
   	</body>
