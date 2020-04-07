@@ -3,7 +3,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  background-color: #555;
+  background-color: #00b6ed;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -28,7 +28,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .form-container {
   max-width: 300px;
   padding: 10px;
-  background-color: white;
+  background-color: #00b6ed;
+  opacity: 0.8;
 }
 
 /* Full-width input fields */
