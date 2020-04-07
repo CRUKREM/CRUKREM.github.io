@@ -20,8 +20,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   display: none;
   position: fixed;
   top: 5px;
-  right: 15px;
-  left: 15px
+  right: 10px;
+  left: 10px;
   z-index: 9;
 }
 
