@@ -42,11 +42,13 @@
     			<button type="button" class="btn cancel" onclick="closeForm()">Back</button>
   			</form>
 		</div>
-		<button class="open-button" onclick="openInstructions()" id="instructions">Instructions</button>
+		<button class="open-button" onclick="openInstructions()" id="instructionsButton">Instructions</button>
 
-		<div class="form-popup" id="myForm">
+		<div class="form-popup" id="instructions">
   			<form action="/action_page.php" class="form-container">
     			<h1>Here are some instructions!</h1>
+			
+			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
 		</div>	
 		<script>
 			function openForm() {
@@ -58,6 +60,16 @@
   				document.getElementById("myForm").style.display = "none";
 				document.getElementById("submitAnswer").style.display = "block";
 			}
+			
+			function openInstructions() {
+  				document.getElementById("instructionsButton").style.display = "none";
+				document.getElementById("instructions").style.display = "block";
+			}
+			function openInstructions() {
+  				document.getElementById("instructionsButton").style.display = "block";
+				document.getElementById("instructions").style.display = "none";
+			}
+			
 		</script>
 	</body>
 </html>
