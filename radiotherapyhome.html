@@ -29,7 +29,7 @@
 			<a-light type="ambient" color="#bbb" intensity="0.8"></a-light>
     			<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
     		</a-scene>
-		<button class="open-button" onclick="openForm()">Submit Answer</button>
+		<button class="open-button" onclick="openForm()" id="submitAnswer">Submit Answer</button>
 
 		<div class="form-popup" id="myForm">
   			<form action="/action_page.php" class="form-container">
@@ -44,12 +44,14 @@
 		</div>
 		<script>
 			function openForm() {
-  			document.getElementById("myForm").style.display = "block";
-		}
+  				document.getElementById("myForm").style.display = "block";
+				submitAnswer.style.display = "none";
+			}
 
-		function closeForm() {
-  			document.getElementById("myForm").style.display = "none";
-		}
+			function closeForm() {
+  				document.getElementById("myForm").style.display = "none";
+				submitAnswer.style.display = "block";
+			}
 		</script>
 	</body>
 </html>
