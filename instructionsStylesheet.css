@@ -2,7 +2,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
 /* Button used to open the contact form - fixed at the top of the page */
-.open-button {
+.open-button-instructions {
   background-color: #00b6ed;
   border-radius: 25px;
   color: white;
@@ -16,7 +16,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* The popup form - hidden by default */
-.form-popup {
+.form-popup-instructions {
   display: none;
   position: fixed;
   top: 5px;
@@ -25,7 +25,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Add styles to the form container */
-.form-container {
+.form-container-instructions {
   max-width: 300px;
   padding: 10px;
   border-radius: 25px;
@@ -34,7 +34,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
+.form-container-instructions input[type=text], .form-container-instructions input[type=password] {
   width: 100%;
   padding: 15px;
   border-radius: 25px;
@@ -44,13 +44,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container-instructions input[type=text]:focus, .form-container-instructions input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
 
 /* Set a style for the submit/login button */
-.form-container .btn {
+.form-container-instructions .btn {
   background-color: #EC008C;
   border-radius: 25px;
   color: white;
@@ -62,11 +62,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Add a red background color to the cancel button */
-.form-container .cancel {
+.form-container-instructions .cancel {
   background-color: #00B6ED;
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-container-instructions .btn:hover, .open-button:hover {
   opacity: 1;
 }
