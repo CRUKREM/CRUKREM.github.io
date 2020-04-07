@@ -40,8 +40,14 @@
 
     			<button type="submit" class="btn">Answer</button>
     			<button type="button" class="btn cancel" onclick="closeForm()">Back</button>
-  		</form>
+  			</form>
 		</div>
+		<button class="open-button" onclick="openInstructions()" id="instructions">Instructions</button>
+
+		<div class="form-popup" id="myForm">
+  			<form action="/action_page.php" class="form-container">
+    			<h1>Here are some instructions!</h1>
+		</div>	
 		<script>
 			function openForm() {
   				document.getElementById("myForm").style.display = "block";
