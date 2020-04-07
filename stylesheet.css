@@ -11,7 +11,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 0.8;
   position: fixed;
   bottom: 23px;
-  right: 28px;
+  margin: auto;
   width: 280px;
 }
 
@@ -20,7 +20,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   display: none;
   position: fixed;
   bottom: 5px;
-  right: 15px;
+  margin: auto;
   z-index: 9;
 }
 
