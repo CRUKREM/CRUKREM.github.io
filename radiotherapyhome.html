@@ -39,7 +39,7 @@
     				<label for="email"><b>Answer</b></label>
     				<input type="text" placeholder="Answer" name="email" required>
 
-    				<button type="submit" class="btn">Answer</button>
+    				<button type="submit" class="btn" onclick="checkAnswer()">Submit</button>
     				<button type="button" class="btn cancel" onclick="closeForm()">Back</button>
   			</form>
 		</div>
@@ -78,7 +78,13 @@
 				document.getElementById("instructionsButton").style.display = "block";
 				document.getElementById("submitAnswer").style.display = "block";
 			}
-			
+			function checkAnswer() {
+				if (value == 130,000 || 130000 || 130 000)
+					window.alert("Correct!")
+				} else {
+					window.alert("Not quite - try again!")
+				}
+			}
 		</script>
 	</body>
 </html>
