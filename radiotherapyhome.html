@@ -55,8 +55,15 @@
 				<p>Instructions go here!</p>
 			</div>
 		</div>
-		<div class="form-popup-instructions" id="popup">
-		
+		<div class="form-popup-instructions" id="correct">
+			<div class="form-container-instructions">
+				<h1>Correct! Here's some more info about it:</h1>
+			</div>
+		</div>
+		<div class ="form-popup-instructions" id="incorrect">
+			<div class="form-container-instructions">
+				<h1>Nope! Try again</h1>
+			</div>
 		</div>
 		<script>
 			function openForm() {
@@ -82,5 +89,14 @@
 				document.getElementById("submitAnswer").style.display = "block";
 			}
 		</script>
+		<script>
+			function checkAnswer() {
+				if (value == 130,000 ¦¦ 130000 ¦¦ 130 000) {
+					document.getElementById("correct");
+				} else {
+					document.getElementById("incorrect");
+				}
+			}
+		</script>			
 	</body>
 </html>
