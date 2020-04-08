@@ -61,6 +61,12 @@
 				<h1>Correct! Well done!</h1>
 			</div>
 		</div>
+		<div class="form-popup" id="incorrect">
+			<div class="form-container">
+				<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+				<h1>Sorry, try again...</h1>
+			</div>
+		</div>
 		<script>
 			function openForm() {
   				document.getElementById("myForm").style.display = "block";
@@ -83,6 +89,8 @@
   				document.getElementById("instructions").style.display = "none";
 				document.getElementById("instructionsButton").style.display = "block";
 				document.getElementById("submitAnswer").style.display = "block";
+				document.getElementById("correct").style.display = "none"
+				document.getElementById("incorrect").style.display = "none";
 			}
 		</script>
 		<script>
