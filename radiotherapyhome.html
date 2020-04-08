@@ -86,10 +86,10 @@
 			}
 		</script>
 		<script>
-			function checkAnswer(form) {
-				var answered = document.getElementById('email');
+			function checkAnswer() {
+				var answered = document.forms["myForm"]["email"].value;
 				
-				if (answered == 130,000 ¦¦ 130000 ¦¦ 130 000) {
+				if (answered == "130,000" ¦¦ "130000" ¦¦ "130 000") {
 					document.getElementById("correct").style.display = "block";
 					document.getElementById("myForm").style.display = "none";
 				} else {
