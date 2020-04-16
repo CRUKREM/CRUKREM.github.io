@@ -12,7 +12,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: fixed;
   bottom: 23px;
   right: 30px;
-  max-width: 1000px;
+  max-width: 280px;
 }
 
 /* The popup form - hidden by default */
