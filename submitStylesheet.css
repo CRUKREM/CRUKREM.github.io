@@ -20,8 +20,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   display: none;
   position: fixed;
   bottom: 5px;
-  right: 30px;
-  margin-left: 30px;
+  right: 20px;
   z-index: 9;
   overflow: auto;
 }
@@ -32,6 +31,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   padding: 10px;
   border-radius: 25px;
   background-color: #C6C6C6;
+  margin-right: 20px;
+  margin-left: 20px;
   opacity: 0.9;
 }
 
