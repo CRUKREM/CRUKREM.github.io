@@ -13,7 +13,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   bottom: 23px;
   right: 40px;
   width: 280px;
-  max-width: 280px;
 }
 
 /* The popup form - hidden by default */
@@ -61,6 +60,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   padding: 16px 20px;
   border: none;
   width: 100%;
+  max-width: 280px;
   margin-top: 10px;
   opacity: 1;
 }
