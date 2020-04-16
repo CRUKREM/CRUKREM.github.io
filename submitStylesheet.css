@@ -10,7 +10,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   border: none;
   opacity: 0.8;
   position: fixed;
-  bottom: 23px;
+  bottom: 20px;
   right: 40px;
   width: 280px;
 }
@@ -28,7 +28,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 /* Add styles to the form container */
 .form-container {
   max-width: 600px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 25px;
   background-color: #C6C6C6;
   margin-left: 10px;
@@ -39,7 +39,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password] {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border-radius: 25px;
   margin: 5px 0 22px 0;
   border: none;
@@ -57,7 +57,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   background-color: #EC008C;
   border-radius: 25px;
   color: white;
-  padding: 16px 20px;
+  padding: 5px 10px;
   border: none;
   width: 100%;
   max-width: 280px;
