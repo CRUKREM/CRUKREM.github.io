@@ -11,8 +11,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 0.8;
   position: fixed;
   bottom: 23px;
-  right: 40px;
-  width: 280px;
+  right: 30px;
+  max-width: 280px;
 }
 
 /* The popup form - hidden by default */
@@ -20,7 +20,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   display: none;
   position: fixed;
   bottom: 5px;
-  right: 20px;
+  right: 10px;
   z-index: 9;
   overflow: auto;
 }
