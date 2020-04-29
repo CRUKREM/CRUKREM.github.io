@@ -1,111 +1,117 @@
 <!doctype HTML>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-		<script src="ar.js.02.07.js"></script>
-		<link href="submitStylesheet.css" rel="stylesheet">
-		<link href="instructionsStylesheet.css" rel="stylesheet">
-	</head>
-	<body style='margin : 0px; overflow: hidden'; cursor="fuse: false; rayOrigin: mouse">
-  		<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3' vr-mode-ui="enabled: false">
-			<a-marker markerhandler emitevents="true" id="mask"; type='barcode' value='1' smooth='true'>
-				<a-gltf-model src='radiotherapy/radiomask.glb' scale='0.05 0.05 0.05' position='0 0 0' object-model id="mask">
-				</a-gltf-model>
-				<a-entity geometry="primitive: plane;" material="opacity: 0">
-      	  		</a-marker>
-			<a-marker type='barcode' value='13' smooth='true'>
-				<a-gltf-model src='radiotherapy/head.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='0 0 -1.2' object-model id="head"></a-gltf-model>
-      	  		</a-marker>
-			<a-marker type='barcode' value='0' smooth='true'>
-				<a-gltf-model src='radiotherapy/neck.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='0 0 0' object-model id="neck"></a-gltf-model>
-      	  		</a-marker>
-			<a-marker type='barcode' value='2' smooth='true'>
-				<a-gltf-model src='radiotherapy/left.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='-0.4 0 1.2' object-model id="left"></a-gltf-model>
-      	  		</a-marker>
-			<a-marker type='barcode' value='3' smooth='true'>
-				<a-gltf-model src='radiotherapy/right.glb' scale='0.05 0.05 0.05' rotation='0 -90 0' position='-1.1 0 -1.2' object-model id="right"></a-gltf-model>
-      	  		</a-marker>
-			<a-entity camera></a-entity>
-			<a-light type="ambient" color="#bbb" intensity="0.8"></a-light>
-    			<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
-    		</a-scene>
-		<button class="open-button" onclick="openForm()" id="submitAnswer">Submit Answer</button>
 
-		<div class="form-popup" id="myForm">
-  			<div class="form-container">
-    				<h1>Cancer Research UK was a key player in radiotherapy, which now benefits more than ____________ patients every year in the UK</h1>
+<head>
+	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+	<script src="ar.js.02.07.js"></script>
+	<link href="submitStylesheet.css" rel="stylesheet">
+	<link href="instructionsStylesheet.css" rel="stylesheet">
+</head>
 
-    				<label for="email"><b>Answer</b></label>
-    				<input type="text" placeholder="Answer" id="email" name="email" autocomplete="off" required>
+<body style='margin : 0px; overflow: hidden' ; cursor="fuse: false; rayOrigin: mouse">
+	<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3' vr-mode-ui="enabled: false">
+		<a-marker markerhandler emitevents="true" id="mask" ; type='barcode' value='1' smooth='true'>
+			<a-gltf-model src='radiotherapy/radiomask.glb' scale='0.05 0.05 0.05' position='0 0 0' object-model id="mask">
+			</a-gltf-model>
+			<a-entity geometry="primitive: plane;" material="opacity: 0">
+		</a-marker>
+		<a-marker type='barcode' value='13' smooth='true'>
+			<a-gltf-model src='radiotherapy/head.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='0 0 -1.2' object-model id="head"></a-gltf-model>
+		</a-marker>
+		<a-marker type='barcode' value='0' smooth='true'>
+			<a-gltf-model src='radiotherapy/neck.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='0 0 0' object-model id="neck"></a-gltf-model>
+		</a-marker>
+		<a-marker type='barcode' value='2' smooth='true'>
+			<a-gltf-model src='radiotherapy/left.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='-0.4 0 1.2' object-model id="left"></a-gltf-model>
+		</a-marker>
+		<a-marker type='barcode' value='3' smooth='true'>
+			<a-gltf-model src='radiotherapy/right.glb' scale='0.05 0.05 0.05' rotation='0 -90 0' position='-1.1 0 -1.2' object-model id="right"></a-gltf-model>
+		</a-marker>
+		<a-entity camera></a-entity>
+		<a-light type="ambient" color="#bbb" intensity="0.8"></a-light>
+		<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
+	</a-scene>
+	<button class="open-button" onclick="openForm()" id="submitAnswer">Submit Answer</button>
 
-    				<button type="submit" class="btn" onclick="checkAnswer()">Submit</button>
-    				<button type="button" class="btn cancel" onclick="closeForm()">Back</button>
-  			</div>
-		</div>
-		
-		<button class="open-button-instructions" onclick="openInstructions()" id="instructionsButton">Instructions</button>
+	<div class="form-popup" id="myForm">
+		<div class="form-container">
+			<h1 style="font-size:20px;">Cancer Research UK was a key player in radiotherapy, which now benefits more than ____________ patients every year in the UK.</h1>
 
-		<div class="form-popup-instructions" id="instructions">
-  			<div class="form-container-instructions">
-    				
-				<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
-				
-				<h1>Please Read Carefully!</h1>
-				<p>Instructions go here!</p>
+			<label for="email"><b></b></label>
+			<input type="text" placeholder="Answer" id="email" name="email" autocomplete="off" required>
+			<div>
+				<button type="submit" class="btn" onclick="checkAnswer()">Submit</button></div>
+			<div><button type="button" class="btn cancel" onclick="closeForm()">Back</button>
 			</div>
 		</div>
-		<div class="form-popup" id="correct">
-			<div class="form-container">
-				<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
-				<h1>Correct! Well done!</h1>
-				<p>Here's some more info about it</p>
-			</div>
-		</div>
-		<div class="form-popup" id="incorrect">
-			<div class="form-container">
-				<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
-				<h1>Sorry, try again...</h1>
-			</div>
-		</div>
-		<script>
-			function openForm() {
-  				document.getElementById("myForm").style.display = "block";
-				document.getElementById("submitAnswer").style.display = "none";
-				document.getElementById("instructionsButton").style.display = "none";
-			}
+	</div>
 
-			function closeForm() {
-  				document.getElementById("myForm").style.display = "none";
-				document.getElementById("submitAnswer").style.display = "block";
-				document.getElementById("instructionsButton").style.display = "block";
+	<button class="open-button-instructions" onclick="openInstructions()" id="instructionsButton">Instructions</button>
+
+	<div class="form-popup-instructions" id="instructions">
+		<div class="form-container-instructions">
+
+			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+
+			<h1 style="color: #2e0086">How To Play</h1>
+			<p>Try pointing your phone at some of the puzzle squares. Pretty cool huh? Four of these squares fit together to make the 3D image of plastic mask worn during radiotherapy. See if you can put the mask together. The fifth square shows you the different patterns you might make with your squares. Compare the shape your four puzzle squares make with these shapes to figure out the answer to this question!</p>
+		</div>
+	</div>
+	<div class="form-popup" id="correct">
+		<div class="form-container">
+			<h1>Correct! Well done!</h1>
+			<p>
+				<a href="https://www.cancerresearchuk.org/about-cancer/cancer-in-general/treatment/radiotherapy" target="_blank">click or tap here</a> to learn more about radiotherapy
+			</p>
+			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+		</div>
+	</div>
+	<div class="form-popup" id="incorrect">
+		<div class="form-container">
+			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+			<h1>Sorry, try again...</h1>
+		</div>
+	</div>
+	<script>
+		function openForm() {
+			document.getElementById("myForm").style.display = "block";
+			document.getElementById("submitAnswer").style.display = "none";
+			document.getElementById("instructionsButton").style.display = "none";
+		}
+
+		function closeForm() {
+			document.getElementById("myForm").style.display = "none";
+			document.getElementById("submitAnswer").style.display = "block";
+			document.getElementById("instructionsButton").style.display = "block";
+		}
+
+		function openInstructions() {
+			document.getElementById("instructions").style.display = "block";
+			document.getElementById("instructionsButton").style.display = "none";
+			document.getElementById("submitAnswer").style.display = "none";
+		}
+
+		function closeInstructions() {
+			document.getElementById("instructions").style.display = "none";
+			document.getElementById("instructionsButton").style.display = "block";
+			document.getElementById("submitAnswer").style.display = "block";
+			document.getElementById("correct").style.display = "none"
+			document.getElementById("incorrect").style.display = "none";
+		}
+	</script>
+	<script>
+		function checkAnswer() {
+			var answered = document.getElementById("email").value;
+			if (answered == "130000") {
+				document.getElementById("correct").style.display = "block";
+				document.getElementById("myForm").style.display = "none";
+			} else {
+				document.getElementById("incorrect").style.display = "block";
+				document.getElementById("myForm").style.display = "none";
 			}
-			
-			function openInstructions() {
-  				document.getElementById("instructions").style.display = "block";
-				document.getElementById("instructionsButton").style.display = "none";
-				document.getElementById("submitAnswer").style.display = "none";
-			}
-			function closeInstructions() {
-  				document.getElementById("instructions").style.display = "none";
-				document.getElementById("instructionsButton").style.display = "block";
-				document.getElementById("submitAnswer").style.display = "block";
-				document.getElementById("correct").style.display = "none"
-				document.getElementById("incorrect").style.display = "none";
-			}
-		</script>
-		<script>
-			function checkAnswer() {
-				var answered = document.getElementById("email").value;
-				
-				if (answered == "130000") {
-					document.getElementById("correct").style.display = "block";
-					document.getElementById("myForm").style.display = "none";
-				} else {
-					document.getElementById("incorrect").style.display = "block";
-					document.getElementById("myForm").style.display = "none";
-				}
-			}
-		</script>			
-	</body>
+		}
+	</script>
+</body>
+
 </html>
