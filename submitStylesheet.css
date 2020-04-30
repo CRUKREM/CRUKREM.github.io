@@ -28,6 +28,7 @@ body {
 	left: 0px;
 	margin: 0.5%;
 	z-index: 9;
+	max-height: 90%;
 	overflow: auto;
 }
 
@@ -106,6 +107,7 @@ body {
 	left: 0px;
 	margin: 0.5%;
 	z-index: 9;
+	max-height: 90%;
 	overflow: auto;
 }
 
@@ -116,7 +118,6 @@ body {
 	padding: 5px 15px 1px;
 	border-radius: 25px;
 	background-color: #c6c6c6;
-	height: 90%;
 	opacity: 0.9;
 }
 
@@ -149,4 +150,10 @@ body {
 .form-container-instructions .btn:hover,
 .open-button:hover {
 	opacity: 1;
+}
+
+.feedback {
+	position: absolute;
+	top: 75px;
+	left: 10px;
 }
