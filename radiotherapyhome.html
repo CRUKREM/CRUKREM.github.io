@@ -11,8 +11,8 @@
 <body style='margin : 0px; overflow: hidden' ; cursor="fuse: false; rayOrigin: mouse">
 	<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3' vr-mode-ui="enabled: false">
 		<a-marker markerhandler emitevents="true" id="mask" ; type='barcode' value='1' smooth='true'>
-			<a-image src='radiotherapy/answerkey.jpg' scale='1' position='0 0 0' rotation='-90 0 0' object-model id="answerkey">
-			</a-image>
+			<a-gltf-model src='radiotherapy/radiomask.glb' scale='0.05 0.05 0.05' position='0 0 0' object-model id="mask">
+			</a-gltf-model>
 			<a-entity geometry="primitive: plane;" material="opacity: 0">
 		</a-marker>
 		<a-marker type='barcode' value='13' smooth='true'>
@@ -54,25 +54,29 @@
 			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
 
 			<h1 style="color: #2e0086">How To Play</h1>
-			<p>Try pointing your phone at some of those puzzle squares you printed and cut out. Pretty cool huh? Four of these squares fit together to make a 3D example of a plastic mask worn during radiotherapy. See if you can put the mask together. The fifth square shows you the different patterns you might make with your squares. Compare the shape your four puzzle squares make with these shapes to figure out the answer to this question!</p>
+			<p>Try pointing your phone at some of those puzzle squares you printed and cut out. Pretty cool huh? Four of these squares can be arranged to make a 3D model of a plastic mask worn during radiotherapy. Think of it like a puzzle - see if you can put the mask pieces together the right way. The square with the numbers on it is important too. It shows you the different patterns your other squares might make once you've completed the mask. Compare the shape you've made with these shapes to figure out the answer to this question!
+			</p>
 			<p style="font-size:8px">3D image courtesy of The Science Museum</p>
 		</div>
 	</div>
 	<div class="form-popup" id="correct">
 		<div class="form-container">
 			<h1>Correct! Well done!</h1>
-			<p>
-				<a href="https://www.cancerresearchuk.org/about-cancer/cancer-in-general/treatment/radiotherapy" target="_blank">click or tap here</a> to learn more about radiotherapy
+			<p>Cancer Research UK was a key player in radiotherapy, which now benefits more than 130,000 patients every year in the UK. You can learn more about radiotherapy
+				<a href="https://www.cancerresearchuk.org/about-cancer/cancer-in-general/treatment/radiotherapy" target="_blank">here.</a>
 			</p>
 			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
 		</div>
 	</div>
 	<div class="form-popup" id="incorrect">
 		<div class="form-container">
+			<h1 style="font-size:20px;">Not quite, try again!</h1>
+			<p1>Remember to compare your shape to the answer key.</p1>
 			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
-			<h1>Sorry, try again...</h1>
 		</div>
 	</div>
+	<div class="feedback" id="feedback">
+		<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=L4lzROBx_EaN7Cc5ArUTSagXi9LB7c9EgPdHXtoJjrZUMEFUVjdCVlgzM0NKRDc5Rkc1M0pVTTFYTy4u" target="_blank">leave feedback</a> </div>
 	<script>
 		function openForm() {
 			document.getElementById("myForm").style.display = "block";
