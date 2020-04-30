@@ -82,18 +82,21 @@
 			document.getElementById("myForm").style.display = "block";
 			document.getElementById("submitAnswer").style.display = "none";
 			document.getElementById("instructionsButton").style.display = "none";
+			document.getElementById("feedback").style.display= "none";
 		}
 
 		function closeForm() {
 			document.getElementById("myForm").style.display = "none";
 			document.getElementById("submitAnswer").style.display = "block";
 			document.getElementById("instructionsButton").style.display = "block";
+			document.getElementById("feedback").style.display= "block";
 		}
 
 		function openInstructions() {
 			document.getElementById("instructions").style.display = "block";
 			document.getElementById("instructionsButton").style.display = "none";
 			document.getElementById("submitAnswer").style.display = "none";
+			document.getElementById("feedback").style.display= "none";
 		}
 
 		function closeInstructions() {
@@ -102,6 +105,7 @@
 			document.getElementById("submitAnswer").style.display = "block";
 			document.getElementById("correct").style.display = "none"
 			document.getElementById("incorrect").style.display = "none";
+			document.getElementById("feedback").style.display= "block";
 		}
 	</script>
 	<script>
