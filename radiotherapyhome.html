@@ -16,16 +16,16 @@
 			</a-image>
 			<a-entity geometry="primitive: plane;" material="opacity: 0">
 		</a-marker>
-		<a-marker type='barcode' value='13' smooth='true'>
+		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='13' smooth='true'>
 			<a-gltf-model src='radiotherapy/headsmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 -1.2' object-model id="head"></a-gltf-model>
 		</a-marker>
-		<a-marker type='barcode' value='0' smooth='true'>
+		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='0' smooth='true'>
 			<a-gltf-model src='radiotherapy/necksmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 0' object-model id="neck"></a-gltf-model>
 		</a-marker>
-		<a-marker type='barcode' value='2' smooth='true'>
+		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='2' smooth='true'>
 			<a-gltf-model src='radiotherapy/leftsmall.glb' scale='1 1 1' rotation='0 90 0' position='-0.4 0 1.2' object-model id="left"></a-gltf-model>
 		</a-marker>
-		<a-marker type='barcode' value='3' smooth='true'>
+		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='3' smooth='true'>
 			<a-gltf-model src='radiotherapy/rightsmall.glb' scale='1 1 1' rotation='0 -90 0' position='-1.1 0 -1.2' object-model id="right"></a-gltf-model>
 		</a-marker>
 		<a-entity camera></a-entity>
