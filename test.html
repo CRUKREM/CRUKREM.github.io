@@ -11,9 +11,9 @@
 
 <body style='margin : 0px; overflow: hidden' ; cursor="fuse: false; rayOrigin: mouse">
 	<a-scene embedded arjs='sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3' vr-mode-ui="enabled: false">
-		<a-nft id="mask" ; type='nft' url="" smooth='true'>
+		<a-nft id="mask" ; type='nft' url="testfolder/00" smooth='true'>
 			<a-gltf-model src='radiotherapy/radiomasksmall.glb' scale='1 1 1' position='0 0 0' rotation='-0 90 0' object-model id="mask">
-		</a-marker>
+		</a-nft>
 		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='13' smooth='true'>
 			<a-gltf-model src='radiotherapy/headsmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 -1.2' object-model id="head"></a-gltf-model>
 		</a-marker>
