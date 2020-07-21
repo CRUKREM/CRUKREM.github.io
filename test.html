@@ -10,7 +10,7 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden' ; cursor="fuse: false; rayOrigin: mouse">
-	<a-scene embedded arjs='trackingMethod: best; sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false; vr-mode-ui=enabled: false'>
+	<a-scene vr-mode-ui="enabled: false;" embedded arjs='trackingMethod: best; sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false; vr-mode-ui=enabled: false'>
 		<a-nft id="masky" ; type='nft' url="testfolder/bw1" smooth='true'>
 			<a-gltf-model src='radiotherapy/radiomasksmall.glb' scale='1 1 1' position='0 0 0' rotation='-0 90 0' object-model id="mask"></a-gltf-model>
 		</a-nft>
