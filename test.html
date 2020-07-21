@@ -44,7 +44,8 @@
         </a-nft>
 		<a-entity camera></a-entity>
     </a-scene>
-AFRAME.registerComponent('registerevents', {
+	<script>
+	AFRAME.registerComponent('registerevents', {
     init: function () {
       const marker = this.el;
       marker.addEventListener("markerFound", ()=> {
@@ -57,6 +58,6 @@ AFRAME.registerComponent('registerevents', {
       });
     },
   });
-
+	</script>
 </body>
 
