@@ -48,48 +48,5 @@
 		<a-entity camera></a-entity>
     </a-scene>
 
-	<script>
-		function openForm() {
-			document.getElementById("myForm").style.display = "block";
-			document.getElementById("submitAnswer").style.display = "none";
-			document.getElementById("instructionsButton").style.display = "none";
-			document.getElementById("feedback").style.display= "none";
-		}
-
-		function closeForm() {
-			document.getElementById("myForm").style.display = "none";
-			document.getElementById("submitAnswer").style.display = "block";
-			document.getElementById("instructionsButton").style.display = "block";
-			document.getElementById("feedback").style.display= "block";
-		}
-
-		function openInstructions() {
-			document.getElementById("instructions").style.display = "block";
-			document.getElementById("instructionsButton").style.display = "none";
-			document.getElementById("submitAnswer").style.display = "none";
-			document.getElementById("feedback").style.display= "none";
-		}
-
-		function closeInstructions() {
-			document.getElementById("instructions").style.display = "none";
-			document.getElementById("instructionsButton").style.display = "block";
-			document.getElementById("submitAnswer").style.display = "block";
-			document.getElementById("correct").style.display = "none"
-			document.getElementById("incorrect").style.display = "none";
-			document.getElementById("feedback").style.display= "block";
-		}
-	</script>
-	<script>
-		function checkAnswer() {
-			var answered = document.getElementById("email").value;
-			if (answered == "130000") {
-				document.getElementById("correct").style.display = "block";
-				document.getElementById("myForm").style.display = "none";
-			} else {
-				document.getElementById("incorrect").style.display = "block";
-				document.getElementById("myForm").style.display = "none";
-			}
-		}
-	</script>
 </body>
 
