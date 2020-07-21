@@ -1,37 +1,30 @@
-<!doctype HTML>
-<html>
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
-<head>
-	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-	<link href="submitStylesheet.css" rel="stylesheet">
-</head>
-
-<body style='margin : 0px; overflow: hidden' ; cursor="fuse: false; rayOrigin: mouse">
-	<a-scene 
-		vr-mode-ui="enabled: false;"
-		renderer="logarithmicDepthBuffer: true;"
-		embedded arjs='trackingMethod: best; sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false; vr-mode-ui=enabled: false'>
-		<a-nft type='nft' url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex" smooth='true'>
-			<a-entity gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf" scale="5 5 5" position="50 150 0"></a-entity>
-		</a-nft>
-		<a-nft smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='nft' url='testfolder/13' smooth='true'>
-			<a-gltf-model src='radiotherapy/headsmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 -1.2' object-model id="head"></a-gltf-model>
-		</a-nft>
-		<a-nft smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='nft' url='testfolder/00' smooth='true'>
-			<a-gltf-model src='radiotherapy/necksmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 0' object-model id="neck"></a-gltf-model>
-		</a-nft>
-		<a-nft smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='nft' url='testfolder/02' smooth='true'>
-			<a-gltf-model src='radiotherapy/leftsmall.glb' scale='1 1 1' rotation='0 90 0' position='-0.4 0 1.2' object-model id="left"></a-gltf-model>
-		</a-nft>
-		<a-nftr smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='nft' url='testfolder/03' smooth='true'>
-			<a-gltf-model src='radiotherapy/rightsmall.glb' scale='1 1 1' rotation='0 -90 0' position='-1.1 0 -1.2' object-model id="right"></a-gltf-model>
-		</a-nft>
-		<a-entity camera></a-entity>
-		<a-light type="ambient" color="#bbb" intensity="0.8"></a-light>
-		<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
-	</a-scene>
+<body style="margin : 0px; overflow: hidden;">
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
+    <a-nft
+      type="nft"
+      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    >
+      <a-entity
+        gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+        scale="5 5 5"
+        position="50 150 0"
+      >
+      </a-entity>
+    </a-nft>
+    <a-entity camera></a-entity>
+  </a-scene>
 	<button class="open-button" onclick="openForm()" id="submitAnswer">Submit Answer</button>
 
 	<div class="form-popup" id="myForm">
