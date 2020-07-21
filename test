@@ -1,0 +1,122 @@
+<!doctype HTML>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	<script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js"></script>
+	<script src="stable.js"></script>
+	<link href="submitStylesheet.css" rel="stylesheet">
+</head>
+
+<body style='margin : 0px; overflow: hidden' ; cursor="fuse: false; rayOrigin: mouse">
+	<a-scene embedded arjs='sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3' vr-mode-ui="enabled: false">
+		<a-marker markerhandler emitevents="true" id="mask" ; type='barcode' value='1' smooth='true'>
+			<a-gltf-model src='radiotherapy/radiomasksmall.glb' scale='1 1 1' position='0 0 0' rotation='-0 90 0' object-model id="mask">
+		</a-marker>
+		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='13' smooth='true'>
+			<a-gltf-model src='radiotherapy/headsmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 -1.2' object-model id="head"></a-gltf-model>
+		</a-marker>
+		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='0' smooth='true'>
+			<a-gltf-model src='radiotherapy/necksmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 0' object-model id="neck"></a-gltf-model>
+		</a-marker>
+		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='2' smooth='true'>
+			<a-gltf-model src='radiotherapy/leftsmall.glb' scale='1 1 1' rotation='0 90 0' position='-0.4 0 1.2' object-model id="left"></a-gltf-model>
+		</a-marker>
+		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='3' smooth='true'>
+			<a-gltf-model src='radiotherapy/rightsmall.glb' scale='1 1 1' rotation='0 -90 0' position='-1.1 0 -1.2' object-model id="right"></a-gltf-model>
+		</a-marker>
+		<a-entity camera></a-entity>
+		<a-light type="ambient" color="#bbb" intensity="0.8"></a-light>
+		<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
+	</a-scene>
+	<button class="open-button" onclick="openForm()" id="submitAnswer">Submit Answer</button>
+
+	<div class="form-popup" id="myForm">
+		<div class="form-container">
+			<h1 style="font-size:20px;">Cancer Research UK was a key player in radiotherapy, which now benefits more than ____________ patients every year in the UK.</h1>
+
+			<label for="email"><b></b></label>
+			<input type="text" placeholder="Answer" id="email" name="email" autocomplete="off" required>
+			<div>
+				<button type="submit" class="btn" onclick="checkAnswer()">Submit</button></div>
+			<div><button type="button" class="btn cancel" onclick="closeForm()">Back</button>
+			</div>
+		</div>
+	</div>
+
+	<button class="open-button-instructions" onclick="openInstructions()" id="instructionsButton">Instructions</button>
+
+	<div class="form-popup-instructions" id="instructions">
+		<div class="form-container-instructions">
+
+			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+
+			<h1 style="color: #2e0086">How To Play</h1>
+			<p>Try pointing your phone at some of those squares you printed and cut out. Pretty cool huh? Four of these squares can be arranged to make a 3D model of a plastic mask worn during radiotherapy. Think of it like a puzzle - see if you can put the mask pieces together the right way. The square with the numbers on it is important too. It shows you the different patterns your other squares might make once you've completed the mask. Compare the shape you've made with these shapes to figure out the answer to this question!
+			</p>
+			<p style="font-size:8px">3D image courtesy of The Science Museum</p>
+		</div>
+	</div>
+	<div class="form-popup" id="correct">
+		<div class="form-container">
+			<h1>Correct! Well done!</h1>
+			<p>Cancer Research UK was a key player in radiotherapy, which now benefits more than 130,000 patients every year in the UK. You can learn more about our radiotherapy research
+				<a href="https://www.cancerresearchuk.org/our-research-by-cancer-topic/our-research-into-radiotherapy" target="_blank">here.</a>
+			</p>
+			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+		</div>
+	</div>
+	<div class="form-popup" id="incorrect">
+		<div class="form-container">
+			<h1 style="font-size:20px;">Not quite, try again!</h1>
+			<p1>Remember to compare your shape to the answer key.</p1>
+			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+		</div>
+	</div>
+	<script>
+		function openForm() {
+			document.getElementById("myForm").style.display = "block";
+			document.getElementById("submitAnswer").style.display = "none";
+			document.getElementById("instructionsButton").style.display = "none";
+			document.getElementById("feedback").style.display= "none";
+		}
+
+		function closeForm() {
+			document.getElementById("myForm").style.display = "none";
+			document.getElementById("submitAnswer").style.display = "block";
+			document.getElementById("instructionsButton").style.display = "block";
+			document.getElementById("feedback").style.display= "block";
+		}
+
+		function openInstructions() {
+			document.getElementById("instructions").style.display = "block";
+			document.getElementById("instructionsButton").style.display = "none";
+			document.getElementById("submitAnswer").style.display = "none";
+			document.getElementById("feedback").style.display= "none";
+		}
+
+		function closeInstructions() {
+			document.getElementById("instructions").style.display = "none";
+			document.getElementById("instructionsButton").style.display = "block";
+			document.getElementById("submitAnswer").style.display = "block";
+			document.getElementById("correct").style.display = "none"
+			document.getElementById("incorrect").style.display = "none";
+			document.getElementById("feedback").style.display= "block";
+		}
+	</script>
+	<script>
+		function checkAnswer() {
+			var answered = document.getElementById("email").value;
+			if (answered == "130000") {
+				document.getElementById("correct").style.display = "block";
+				document.getElementById("myForm").style.display = "none";
+			} else {
+				document.getElementById("incorrect").style.display = "block";
+				document.getElementById("myForm").style.display = "none";
+			}
+		}
+	</script>
+</body>
+
+</html>
