@@ -12,9 +12,9 @@
     vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
     embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3"
   >
-    <a-marker
+    <a-nft
       type="barcode"
 	value="1"
       smooth="true"
@@ -28,7 +28,7 @@
         position="0 0 0"
       >
       </a-entity>
-    </a-marker>
+    </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
 	<button class="open-button" onclick="openForm()" id="submitAnswer">Submit Answer</button>
