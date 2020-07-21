@@ -1,79 +1,53 @@
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-		<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-		<link href="submitStylesheet.css" rel="stylesheet">
-	</head>
-	
-<body style="margin : 0px; overflow: hidden;">
-  <a-scene
-    vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
-    embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
-  >
-    <a-nft
-      type="nft"
-	   url="https://github.com/CRUKREM/CRUKREM.github.io/tree/master/testfolder"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    >
-      <a-entity
-        gltf-model="radiotherapy/head.glb"
-        scale="0.01 0.01 0.01"
-        position="100 100 0"
-      >
-      </a-entity>
-    </a-nft>
-    <a-entity camera></a-entity>
-  </a-scene>
-	<button class="open-button" onclick="openForm()" id="submitAnswer">Submit Answer</button>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 
-	<div class="form-popup" id="myForm">
-		<div class="form-container">
-			<h1 style="font-size:20px;">Cancer Research UK was a key player in radiotherapy, which now benefits more than ____________ patients every year in the UK.</h1>
+<style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-			<label for="email"><b></b></label>
-			<input type="text" placeholder="Answer" id="email" name="email" autocomplete="off" required>
-			<div>
-				<button type="submit" class="btn" onclick="checkAnswer()">Submit</button></div>
-			<div><button type="button" class="btn cancel" onclick="closeForm()">Back</button>
-			</div>
-		</div>
-	</div>
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
 
-	<button class="open-button-instructions" onclick="openInstructions()" id="instructionsButton">Instructions</button>
+<!-- rawgithack development URL -->
+<script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
 
-	<div class="form-popup-instructions" id="instructions">
-		<div class="form-container-instructions">
+<body style='margin : 0px; overflow: hidden;'>
+   <!-- minimal loader shown until image descriptors are loaded -->
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+    <a-scene
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
 
-			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+        <!-- use rawgithack to retrieve the correct url for nft marker (see 'trex' below) -->
+        <a-nft
+            type='nft' url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'
+            smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
+            <a-entity
+                gltf-model='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf'
+                scale="5 5 5"
+                position="100 100 0"
+                >
+            </a-entity>
+        </a-nft>
+		<a-entity camera></a-entity>
+    </a-scene>
 
-			<h1 style="color: #2e0086">How To Play</h1>
-			<p>Try pointing your phone at some of those squares you printed and cut out. Pretty cool huh? Four of these squares can be arranged to make a 3D model of a plastic mask worn during radiotherapy. Think of it like a puzzle - see if you can put the mask pieces together the right way. The square with the numbers on it is important too. It shows you the different patterns your other squares might make once you've completed the mask. Compare the shape you've made with these shapes to figure out the answer to this question!
-			</p>
-			<p style="font-size:8px">3D image courtesy of The Science Museum</p>
-		</div>
-	</div>
-	<div class="form-popup" id="correct">
-		<div class="form-container">
-			<h1>Correct! Well done!</h1>
-			<p>Cancer Research UK was a key player in radiotherapy, which now benefits more than 130,000 patients every year in the UK. You can learn more about our radiotherapy research
-				<a href="https://www.cancerresearchuk.org/our-research-by-cancer-topic/our-research-into-radiotherapy" target="_blank">here.</a>
-			</p>
-			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
-		</div>
-	</div>
-	<div class="form-popup" id="incorrect">
-		<div class="form-container">
-			<h1 style="font-size:20px;">Not quite, try again!</h1>
-			<p1>Remember to compare your shape to the answer key.</p1>
-			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
-		</div>
-	</div>
 	<script>
 		function openForm() {
 			document.getElementById("myForm").style.display = "block";
@@ -119,4 +93,3 @@
 	</script>
 </body>
 
-</html>
