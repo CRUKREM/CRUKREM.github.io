@@ -2,67 +2,109 @@
 <html>
 
 <head>
+	<script>
+		//Loads multimarker file to localstorage otherwise the area preset will only look for hiro alone
+		var a = window.location.toString();
+		var file = a.substring(a.indexOf("?") + 1);
+		var xobj = new XMLHttpRequest();
+		xobj.overrideMimeType("application/json");
+		if (file == a) {
+			xobj.open('GET', 'https://crukrem.github.io/testfolder/multimarker', true); // 
+		} else {
+			xobj.open('GET', file, true); // 
+		}
+		xobj.onreadystatechange = function() {
+			if (xobj.readyState == 4 && xobj.status == "200") {
+				localStorage.setItem('https://crukrem.github.io/testfolder/multimarker', xobj.responseText);
+			}
+		};
+		xobj.send();
+	</script>
 	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-	<script src="stable.js"></script>
+	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	<link href="submitStylesheet.css" rel="stylesheet">
 </head>
 
 <body style='margin : 0px; overflow: hidden' ; cursor="fuse: false; rayOrigin: mouse">
-	<a-scene embedded arjs='sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3' vr-mode-ui="enabled: false">
-		<a-marker markerhandler emitevents="true" id="mask" ; type='barcode' value='1' smooth='true'>
-			<a-gltf-model src='radiotherapy/radiomasksmall.glb' scale='1 1 1' position='0 0 0' rotation='-0 90 0' object-model id="mask">
+	<a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3' vr-mode-ui="enabled: false">
+		<a-marker preset="area">
+			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/radiomasksmall.glb' scale='1 1 1' rotation='0 0 0' position='0 0 0' object-model id="big"></a-entity>
 		</a-marker>
-		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='13' smooth='true'>
-			<a-gltf-model src='radiotherapy/headsmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 -1.2' object-model id="head"></a-gltf-model>
+		<a-marker id="mask" ; type='barcode' value='1' smooth='true'>
+			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/radiomask.glb' scale='0.05 0.05 0.05' position='0 0 0' object-model id="mask">
+			</a-entity>
+			<a-image src='https://crukrem.github.io/radiotherapy/answerkey.jpg' scale ='1.1 1.1 1.1' rotation='-90 0 0'>
+			</a-image>
 		</a-marker>
-		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='0' smooth='true'>
-			<a-gltf-model src='radiotherapy/necksmall.glb' scale='1 1 1' rotation='0 90 0' position='0 0 0' object-model id="neck"></a-gltf-model>
+		<a-marker type='barcode' value='13' smooth='true'>
+			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/head.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='0 0 -1.2' object-model id="head"></a-entity>
 		</a-marker>
-		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='2' smooth='true'>
-			<a-gltf-model src='radiotherapy/leftsmall.glb' scale='1 1 1' rotation='0 90 0' position='-0.4 0 1.2' object-model id="left"></a-gltf-model>
+		<a-marker type='barcode' value='0' smooth='true'>
+			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/neck.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='0 0 0' object-model id="neck"></a-entity>
 		</a-marker>
-		<a-marker smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5" type='barcode' value='3' smooth='true'>
-			<a-gltf-model src='radiotherapy/rightsmall.glb' scale='1 1 1' rotation='0 -90 0' position='-1.1 0 -1.2' object-model id="right"></a-gltf-model>
+		<a-marker type='barcode' value='2' smooth='true'>
+			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/left.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='-0.4 0 1.2' object-model id="left"></a-entity>
+		</a-marker>
+		<a-marker type='barcode' value='3' smooth='true'>
+			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/right.glb' scale='0.05 0.05 0.05' rotation='0 90 0' position='1.1 0 1.2' object-model id="right"></a-entity>
 		</a-marker>
 		<a-entity camera></a-entity>
 		<a-light type="ambient" color="#bbb" intensity="0.8"></a-light>
 		<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
 	</a-scene>
-	<button class="open-button" onclick="openForm()" id="submitAnswer">Submit Answer</button>
 
-	<div class="form-popup" id="myForm">
-		<div class="form-container">
-			<h1 style="font-size:20px;">Cancer Research UK was a key player in radiotherapy, which now benefits more than ____________ patients every year in the UK.</h1>
+	<div style="display: block;" class="form-container-instructions" id="instructions1">
+		<div id="1">
+			<p>Thanks for trying out the Cancer Research UK augmented reality activity! Every day our researchers work hard to solve difficult problems and save lives. This is your chance to step into the shoes of a researcher and try to figure out a problem of your own.</p>
+		</div>
 
-			<label for="email"><b></b></label>
-			<input type="text" placeholder="Answer" id="email" name="email" autocomplete="off" required>
-			<div>
-				<button type="submit" class="btn" onclick="checkAnswer()">Submit</button></div>
-			<div><button type="button" class="btn cancel" onclick="closeForm()">Back</button>
-			</div>
+		<div id="2">
+			<p><b>Cancer Research UK was a key player in the development of radiotherapy. </b>See if you can figure out how many patients in the UK benefit every year from radiotherapy.</p>
+		</div>
+
+		<div id="3">
+			<p>To find the answer, you'll need to do two things. First, you'll need to physically arrange those 4 squares so that when you look at them through this device, they form the 3D image of a radiotherapy mask. sort of like a 3D puzzle. You can see what the mask should look like when it's complete by looking at the 5th square.</p>
+		</div>
+		<div id="4">
+			<p>Once you've done that, click the "I think I've got it!" button to see if you can answer a question about our life-saving research</p>
+		</div>
+		<div>
+			<a href="#" id="prev"><button type="button" class="btn cancel">Prev</button></a>
+			<a href="#" id="next"><button type="button" class="btn cancel">Next</button></a>
 		</div>
 	</div>
 
-	<button class="open-button-instructions" onclick="openInstructions()" id="instructionsButton">Instructions</button>
+	<button class="open-button" onclick="openForm()" id="submitAnswer">I think I've got it!</button>
+	<div class="form-container" id="myForm">
+		<h1 style="font-size:20px;">Cancer Research UK was a key player in radiotherapy, which now benefits more than ____________ patients every year in the UK.</h1>
+		<h2 style="font-size:13px;">Hint - Try looking through the mouth of the original example mask from different angles. Do you see those groups of black squares? Do any of those patterns match the one you made with your own, larger squares?</h2>
 
-	<div class="form-popup-instructions" id="instructions">
-		<div class="form-container-instructions">
-
-			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
-
-			<h1 style="color: #2e0086">How To Play</h1>
-			<p>Try pointing your phone at some of those squares you printed and cut out. Pretty cool huh? Four of these squares can be arranged to make a 3D model of a plastic mask worn during radiotherapy. Think of it like a puzzle - see if you can put the mask pieces together the right way. The square with the numbers on it is important too. It shows you the different patterns your other squares might make once you've completed the mask. Compare the shape you've made with these shapes to figure out the answer to this question!
-			</p>
-			<p style="font-size:8px">3D image courtesy of The Science Museum</p>
+		<label for="email"><b></b></label>
+		<input type="text" placeholder="Answer" id="email" name="email" autocomplete="off" required>
+		<div>
+			<button type="submit" class="btn" onclick="checkAnswer()">Submit</button></div>
+		<div><button type="button" class="btn cancel" onclick="closeForm()">Back</button>
 		</div>
+	</div>
+	<div style="display: none;" id="5">
+		<a href="#" onclick="reset()"><button type="button" class="open-button-instructions">Instructions</button></a>
+	</div>
+
+	<div class="form-container-instructions" id="instructions">
+
+		<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+
+		<h1 style="color: #2e0086">How To Play</h1>
+		<p>Try pointing your phone at some of those puzzle squares you printed and cut out. Pretty cool huh? Four of these squares can be arranged to make a 3D model of a plastic mask worn during radiotherapy. Think of it like a puzzle - see if you can put the mask pieces together the right way. The square with the numbers on it is important too. It shows you the different patterns your other squares might make once you've completed the mask. Compare the shape you've made with these shapes to figure out the answer to this question!
+		</p>
+		<p style="font-size:8px">3D image courtesy of The Science Museum</p>
 	</div>
 	<div class="form-popup" id="correct">
 		<div class="form-container">
 			<h1>Correct! Well done!</h1>
-			<p>Cancer Research UK was a key player in radiotherapy, which now benefits more than 130,000 patients every year in the UK. You can learn more about our radiotherapy research
-				<a href="https://www.cancerresearchuk.org/our-research-by-cancer-topic/our-research-into-radiotherapy" target="_blank">here.</a>
+			<p>Cancer Research UK was a key player in radiotherapy, which now benefits more than 130,000 patients every year in the UK. You can learn more about radiotherapy
+				<a href="https://www.cancerresearchuk.org/about-cancer/cancer-in-general/treatment/radiotherapy" target="_blank">here.</a>
 			</p>
 			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
 		</div>
@@ -74,49 +116,7 @@
 			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
 		</div>
 	</div>
-	<script>
-		function openForm() {
-			document.getElementById("myForm").style.display = "block";
-			document.getElementById("submitAnswer").style.display = "none";
-			document.getElementById("instructionsButton").style.display = "none";
-			document.getElementById("feedback").style.display= "none";
-		}
 
-		function closeForm() {
-			document.getElementById("myForm").style.display = "none";
-			document.getElementById("submitAnswer").style.display = "block";
-			document.getElementById("instructionsButton").style.display = "block";
-			document.getElementById("feedback").style.display= "block";
-		}
-
-		function openInstructions() {
-			document.getElementById("instructions").style.display = "block";
-			document.getElementById("instructionsButton").style.display = "none";
-			document.getElementById("submitAnswer").style.display = "none";
-			document.getElementById("feedback").style.display= "none";
-		}
-
-		function closeInstructions() {
-			document.getElementById("instructions").style.display = "none";
-			document.getElementById("instructionsButton").style.display = "block";
-			document.getElementById("submitAnswer").style.display = "block";
-			document.getElementById("correct").style.display = "none"
-			document.getElementById("incorrect").style.display = "none";
-			document.getElementById("feedback").style.display= "block";
-		}
-	</script>
-	<script>
-		function checkAnswer() {
-			var answered = document.getElementById("email").value;
-			if (answered == "130000") {
-				document.getElementById("correct").style.display = "block";
-				document.getElementById("myForm").style.display = "none";
-			} else {
-				document.getElementById("incorrect").style.display = "block";
-				document.getElementById("myForm").style.display = "none";
-			}
-		}
-	</script>
 </body>
 
 </html>
