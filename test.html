@@ -10,14 +10,14 @@
       var xobj = new XMLHttpRequest();
             xobj.overrideMimeType("application/json");
             if(file==a){
-              xobj.open('GET', 'testfolder/multimarker1', true); // 
+              xobj.open('GET', 'testfolder/multimarker', true); // 
             }
             else{
               xobj.open('GET', file, true); // 
             }
           xobj.onreadystatechange = function () { 
       if (xobj.readyState == 4 && xobj.status == "200") {
-        localStorage.setItem('testfolder/multimarker1',xobj.responseText);
+        localStorage.setItem('testfolder/multimarker',xobj.responseText);
         }};
         xobj.send();
             </script>
