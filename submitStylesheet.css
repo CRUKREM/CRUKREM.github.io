@@ -21,7 +21,7 @@ body {
 }
 
 /* The popup form - hidden by default */
-.form-popup {
+.form-container {
 	display: none;
 	position: absolute;
 	bottom: 0px;
@@ -30,16 +30,11 @@ body {
 	z-index: 9;
 	max-height: 90%;
 	overflow: auto;
-}
-
-/* Add styles to the form container */
-.form-container {
 	width: 90%;
 	max-width: 310px;
 	padding: 1px 15px 5px;
 	border-radius: 25px;
 	background-color: #c6c6c6;
-	max-height: 90%;
 	opacity: 0.9;
 }
 
@@ -99,18 +94,6 @@ body {
 	max-width: 80%;
 }
 
-/* The popup form - hidden by default */
-.form-popup-instructions {
-	display: none;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	margin: 0.5%;
-	z-index: 9;
-	max-height: 90%;
-	overflow: auto;
-}
-
 /* Add styles to the form container */
 .form-container-instructions {
 	width: 90%;
@@ -119,6 +102,14 @@ body {
 	border-radius: 25px;
 	background-color: #c6c6c6;
 	opacity: 0.9;
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	margin: 0.5%;
+	z-index: 9;
+	max-height: 90%;
+	overflow: auto;
 }
 
 /* When the inputs get focus, do something */
