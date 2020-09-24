@@ -1,4 +1,3 @@
-
 var current = 1;
 
 var reset = function () {
