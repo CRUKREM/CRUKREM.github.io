@@ -4,12 +4,14 @@ var current = 1;
 var reset = function () {
 	current = 1;
 	document.getElementById("instructions1").style.display = "block";
+	document.getElementById("myForm").style.display = "none";
+	document.getElementById("submitAnswer").style.display = "block";
 	showContent();
 };
 
 var prev = function () {
 	current -= 1;
-	if (current < 1) current = 1; // can't go too far previous
+	if (current < 1) current = 5; // can't go too far previous
 	showContent();
 };
 
@@ -47,21 +49,20 @@ function openForm() {
 	document.getElementById("myForm").style.display = "block";
 	document.getElementById("submitAnswer").style.display = "none";
 	document.getElementById("4").style.display = "none";
-	document.getElementById("feedback").style.display = "none";
+	document.getElementById("instructions1").style.display = "none";
+	document.getElementById("5").style.display = "block";
 }
 
 function closeForm() {
 	document.getElementById("myForm").style.display = "none";
 	document.getElementById("submitAnswer").style.display = "block";
-	document.getElementById("4").style.display = "block";
-	document.getElementById("feedback").style.display = "block";
+	document.getElementById("4").style.display = "none";
 }
 
 function openInstructions() {
 	document.getElementById("instructions").style.display = "block";
 	document.getElementById("4").style.display = "none";
 	document.getElementById("submitAnswer").style.display = "none";
-	document.getElementById("feedback").style.display = "none";
 }
 
 function closeInstructions() {
@@ -70,12 +71,11 @@ function closeInstructions() {
 	document.getElementById("submitAnswer").style.display = "block";
 	document.getElementById("correct").style.display = "none";
 	document.getElementById("incorrect").style.display = "none";
-	document.getElementById("feedback").style.display = "block";
 }
 
 function checkAnswer() {
-	var answered = document.getElementById("email").value;
-	if (answered == "130000") {
+	var answer = document.getElementById("userGuess").value;
+	if (answer === "130000") {
 		document.getElementById("correct").style.display = "block";
 		document.getElementById("myForm").style.display = "none";
 	} else {
