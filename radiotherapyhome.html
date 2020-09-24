@@ -2,6 +2,24 @@
 <html>
 
 <head>
+	<script>
+		//Loads multimarker file to localstorage otherwise the area preset will only look for hiro alone
+		var a = window.location.toString();
+		var file = a.substring(a.indexOf("?") + 1);
+		var xobj = new XMLHttpRequest();
+		xobj.overrideMimeType("application/json");
+		if (file == a) {
+			xobj.open('GET', 'https://crukrem.github.io/testfolder/multimarker', true); // 
+		} else {
+			xobj.open('GET', file, true); // 
+		}
+		xobj.onreadystatechange = function() {
+			if (xobj.readyState == 4 && xobj.status == "200") {
+				localStorage.setItem('https://crukrem.github.io/testfolder/multimarker', xobj.responseText);
+			}
+		};
+		xobj.send();
+	</script>
 	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -10,10 +28,13 @@
 
 <body style='margin : 0px; overflow: hidden' ; cursor="fuse: false; rayOrigin: mouse">
 	<a-scene embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3' vr-mode-ui="enabled: false">
+		<a-marker preset="area">
+			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/radiomasksmall.glb' scale='1 1 1' rotation='0 0 0' position='0 0 0' object-model id="big"></a-entity>
+		</a-marker>
 		<a-marker id="mask" ; type='barcode' value='1' smooth='true'>
 			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/radiomask.glb' scale='0.05 0.05 0.05' position='0 0 0' object-model id="mask">
 			</a-entity>
-			<a-image src='https://crukrem.github.io/radiotherapy/radiotherapyDigits.jpg' scale ='1.1 1.1 1.1' rotation='-90 0 0'>
+			<a-image src='https://crukrem.github.io/radiotherapy/answerkey.jpg' scale='1.1 1.1 1.1' rotation='-90 0 0'>
 			</a-image>
 		</a-marker>
 		<a-marker type='barcode' value='13' smooth='true'>
@@ -33,20 +54,19 @@
 		<a-light type="directional" intensity="0.6" color="#ffffff" position="0.25 0.5 1"></a-light>
 	</a-scene>
 
-		<div style="display: block;" class="form-container-instructions" id="instructions1">
+	<div style="display: block;" class="form-container-instructions" id="instructions1">
 		<div id="1">
-			<p style="font-size:20px">Thank you for trying out the Cancer Research UK augmented reality activity! Every day our researchers work hard to solve difficult problems and save lives. This is your chance to step into the shoes of a researcher and try to figure out a problem of your own.</p>
+			<p>Thanks for trying out the Cancer Research UK augmented reality activity! Every day our researchers work hard to solve difficult problems and save lives. <b>This is your chance to step into the shoes of a researcher and try to figure out a problem of your own.</b></p>
 		</div>
 
 		<div id="2">
-			<p style="font-size:20px"><b>Cancer Research UK was a key player in the development of radiotherapy. </b>See if you can solve this puzzle and figure out how many patients in the UK benefit every year from radiotherapy. To find the answer, you'll need to follow a couple of steps</p>
+			<p><b>Cancer Research UK was a key player in the development of radiotherapy. </b>See if you can solve this puzzle and figure out how many patients in the UK benefit every year from radiotherapy. To find the answer, you'll need to follow the instructions on the following pages.</p>
 		</div>
-
 		<div id="3">
-			<p style="font-size:20px">First, you'll need to physically arrange those four squares so that when you look at them through this device, they form the 3D image of a radiotherapy mask, sort of like a 3D puzzle. The fifth square shows you what the mask should look like when it's complete.</p>
+			<p>Aim your device at the black square with the white shape in the middle. You can do this now, even with the instructions open. You should see a mesh-like mask. This is a 3D model of an actual mask worn during radiotherapy in order to keep the patient's head and neck still while they are being treated.</p>
 		</div>
 		<div id="4">
-			<p style="font-size:20px">Once you've done that, click the "I think I've got it!" button to see whether you can figure out the answer to a question about our life-saving research.</p>
+			<p>If you look closely through the mouth of the mask, you should see some single-digit numbers. There are six of these digits to find in total. Once you've found all six, arrange them in order from tallest to shortest and you will discover the answer to our skill-testing question: <b>Cancer Research UK was a key player in radiotherapy. How many patients in the UK benefit every year from this research?</b></p>
 		</div>
 		<div>
 			<a href="#" id="prev"><button type="button" class="btn cancel">Prev</button></a>
@@ -54,19 +74,20 @@
 		</div>
 	</div>
 
-	<button class="open-button" onclick="openForm()" id="submitAnswer">I think I've got it!</button>
+	<button class="open-button" onclick="openForm()" id="submitAnswer">Check your answer here!</button>
 	<div class="form-container" id="myForm">
-		<h1 style="font-size:20px;">Cancer Research UK was a key player in radiotherapy, which now benefits more than ____________ patients every year in the UK.</h1>
-		<h2 style="font-size:13px;">Hint - Try looking through the mouth of the original example mask from different angles. Do you see those groups of black squares? Do any of those patterns match the one you made with your own, larger squares?</h2>
-		<label for="email"><b></b></label>
-		<input type="text" placeholder="Answer" id="email" name="email" autocomplete="off" required>
+		<h1 style="font-size:20px;">How many patients in the UK benefit every year from radiotherapy?</h1>
+		<h2 style="font-size:13px;">Don't forget - the correct answer is the biggest number you can find behind the mask</h2>
+
+		<input type="text" placeholder="Answer" id="userGuess" name="userGuess">
+
 		<div>
-			<button type="submit" class="btn" onclick="checkAnswer()">Submit</button></div>
-		<div><button type="button" class="btn cancel" onclick="closeForm()">Back</button>
+			<button type="button" class="btn" onclick="checkAnswer()">Submit</button></div>
+		<div><button type="button" class="btn cancel" onclick="closeForm()">Back to camera</button>
 		</div>
 	</div>
 	<div style="display: none;" id="5">
-		<a href="#" onclick="reset()"><button type="button" class="open-button-instructions">Instructions</button></a>
+		<a href="#" onclick="reset();"><button type="button" class="open-button-instructions">Instructions</button></a>
 	</div>
 
 	<div class="form-container-instructions" id="instructions">
@@ -78,8 +99,8 @@
 		</p>
 		<p style="font-size:8px">3D image courtesy of The Science Museum</p>
 	</div>
-	<div class="form-popup" id="correct">
-		<div class="form-container">
+	<div class="form-popup">
+		<div class="form-container" id="correct">
 			<h1>Correct! Well done!</h1>
 			<p>Cancer Research UK was a key player in radiotherapy, which now benefits more than 130,000 patients every year in the UK. You can learn more about radiotherapy
 				<a href="https://www.cancerresearchuk.org/about-cancer/cancer-in-general/treatment/radiotherapy" target="_blank">here.</a>
@@ -87,15 +108,14 @@
 			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
 		</div>
 	</div>
-	<div class="form-popup" id="incorrect">
-		<div class="form-container">
+	<div class="form-popup">
+		<div class="form-container" id="incorrect">
 			<h1 style="font-size:20px;">Not quite, try again!</h1>
-			<p1>Remember to compare your shape to the answer key.</p1>
-			<button type="button" class="btn cancel" onclick="closeInstructions()">Back</button>
+			<p1>Try looking through the mask again to see if there are any numbers you may have missed.</p1>
+			<button type="button" class="btn cancel" onclick="closeInstructions()">Back to camera</button>
 		</div>
 	</div>
 
 </body>
-<script type="text/javascript" src="radiojs.js"></script>
 
 </html>
