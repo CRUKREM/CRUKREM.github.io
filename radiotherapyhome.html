@@ -2,24 +2,6 @@
 <html>
 
 <head>
-	<script>
-		//Loads multimarker file to localstorage otherwise the area preset will only look for hiro alone
-		var a = window.location.toString();
-		var file = a.substring(a.indexOf("?") + 1);
-		var xobj = new XMLHttpRequest();
-		xobj.overrideMimeType("application/json");
-		if (file == a) {
-			xobj.open('GET', 'https://crukrem.github.io/testfolder/multimarker', true); // 
-		} else {
-			xobj.open('GET', file, true); // 
-		}
-		xobj.onreadystatechange = function() {
-			if (xobj.readyState == 4 && xobj.status == "200") {
-				localStorage.setItem('https://crukrem.github.io/testfolder/multimarker', xobj.responseText);
-			}
-		};
-		xobj.send();
-	</script>
 	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -34,7 +16,7 @@
 		<a-marker id="mask" ; type='barcode' value='1' smooth='true'>
 			<a-entity gltf-model='https://crukrem.github.io/radiotherapy/radiomask.glb' scale='0.05 0.05 0.05' position='0 0 0' object-model id="mask">
 			</a-entity>
-			<a-image src='https://crukrem.github.io/radiotherapy/answerkey.jpg' scale='1.1 1.1 1.1' rotation='-90 0 0'>
+			<a-image src='https://crukrem.github.io/radiotherapy/answerkey.jpg' scale='1.1 1.1 1.1' rotation='0 0 0'>
 			</a-image>
 		</a-marker>
 		<a-marker type='barcode' value='13' smooth='true'>
